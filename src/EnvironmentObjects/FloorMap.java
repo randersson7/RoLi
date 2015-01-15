@@ -1,4 +1,4 @@
-package objects;
+package EnvironmentObjects;
 
 /**
  * Created by randersson on 2015-01-07.
@@ -27,4 +27,10 @@ public class FloorMap {
     public char[][] getCurrMap(){
         return currMap;
     }
+    
+    public int[] getSpawnPoint() {
+		return spawnPoint;
+	}
+    
+    
 }

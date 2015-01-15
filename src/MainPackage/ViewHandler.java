@@ -1,11 +1,14 @@
+package MainPackage;
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.wswing.WSwingConsoleInterface;
-import objects.Enemy;
 import objects.ObjectHandler;
-import objects.Player;
 
 import java.util.Properties;
+
+import CharacterObjects.Enemy;
+import CharacterObjects.Player;
+import ItemObjects.ContainerItem;
 
 /**
  * Created by randersson on 2015-01-09.
@@ -21,6 +24,7 @@ public class ViewHandler {
 
         try{
             csi = new WSwingConsoleInterface("My little Java Roguelike", true);
+            
         }
         catch (ExceptionInInitializerError ex){
             System.out.println("*** Error: Swing Console box cannot be initialized ***");
@@ -40,6 +44,11 @@ public class ViewHandler {
                 csi.print(i,j,objectHandler.getMaps().GetMap(objectHandler.getCurrentFloor()).getCurrMap()[i][j], CSIColor.WHITE);
             }
         }
+        
+        for (ContainerItem containerItem : objectHandler.getMaps().getItemCollection()) {
+			csi.print(containerItem.getxPos(), containerItem.getyPos(), containerItem.getSymbol(), CSIColor.CHESTNUT);
+		}
+        
         for(Player tmpP: objectHandler.getPlayerList()){
             if(tmpP.isVisible())
                 csi.print(tmpP.getXPos(), tmpP.getYPos(), tmpP.getSymbol(), tmpP.getColor());
@@ -50,7 +59,7 @@ public class ViewHandler {
                 csi.print(tmpE.getXPos(), tmpE.getYPos(), tmpE.getSymbol(), tmpE.getColor());
         }
 
-        csi.print(objectHandler.getCursor().getXPos(), objectHandler.getCursor().getYPos(),
+        csi.print(objectHandler.getCursor().xPos(), objectHandler.getCursor().yPos(),
                 objectHandler.getCursor().getSymbol(), CSIColor.WHITE);
         csi.refresh();
     }

@@ -1,9 +1,11 @@
-package objects;
+package CharacterObjects;
 
 import net.slashie.libjcsi.CSIColor;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ItemObjects.Item;
 
 /**
  * Created by randersson on 2015-01-05.
@@ -23,13 +25,13 @@ class Creature {
     int yPos = 0;
     int zPos = 0;
 
-    List inventory;
+    List<Item> inventory;
     char symbol;
     String background;
     CSIColor color;
 
     public Creature() {
-        inventory = new ArrayList();
+        inventory = new ArrayList<Item>();
     }
 
     public CSIColor getColor() {
@@ -55,5 +57,4 @@ class Creature {
     public void MoveYPos(int deltaY){
         yPos+=deltaY;
     }
-
 }

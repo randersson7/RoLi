@@ -1,12 +1,12 @@
-package objects;
+package CharacterObjects;
 
 /**
  * Created by randersson on 2015-01-08.
  */
 public class Cursor {
-    char symbol;
-    int xPos;
-    int yPos;
+    private char symbol;
+    private int xPos;
+    private int yPos;
 
     public Cursor(int x, int y) {
         symbol = 'O';
@@ -16,17 +16,18 @@ public class Cursor {
 
     public void DeltaX(int deltaX){
         xPos+=deltaX;
+        
     }
 
     public void DeltaY(int deltaY){
         yPos+=deltaY;
     }
 
-    public int getXPos() {
+    public int xPos() {
         return xPos;
     }
 
-    public int getYPos() {
+    public int yPos() {
         return yPos;
     }
 

@@ -1,4 +1,4 @@
-package objects;
+package CharacterObjects;
 
 import net.slashie.libjcsi.CSIColor;
 

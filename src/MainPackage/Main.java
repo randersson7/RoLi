@@ -1,3 +1,4 @@
+package MainPackage;
 import net.slashie.libjcsi.CharKey;
 import objects.*;
 
