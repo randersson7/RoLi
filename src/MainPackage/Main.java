@@ -14,6 +14,7 @@ public class Main {
             view.DrawStuff(objectHandler);
 
             CharKey dir = view.inKey();
+           
             stop=objectHandler.Controller(dir);
         }
         System.exit(0);
