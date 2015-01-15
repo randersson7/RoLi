@@ -1,0 +1,105 @@
+package objects;
+
+import net.slashie.libjcsi.CSIColor;
+import net.slashie.libjcsi.CharKey;
+
+import java.util.ArrayList;
+
+
+/**
+ * Created by randersson on 2015-01-09.
+ */
+public class ObjectHandler {
+    private ArrayList<Player> playerList;
+    private ArrayList<Enemy> enemyList;
+
+    private RogueMap Maps;
+
+    private Cursor cursor;
+    private int currentFloor = 0;
+
+    public ObjectHandler() {
+
+        Maps = new RogueMap();
+
+        playerList = new ArrayList<Player>();
+        int[] spawnPoint = Maps.GetMap(currentFloor).spawnPoint;
+        playerList.add(new Player('@', spawnPoint[0]+playerList.size(), spawnPoint[1]+1, CSIColor.WHITE));
+        playerList.add(new Player('@', spawnPoint[0]+playerList.size(), spawnPoint[1]+1, CSIColor.AMARANTH));
+
+        enemyList = new ArrayList<Enemy>();
+        cursor = new Cursor(spawnPoint[0]+1, spawnPoint[1]);
+    }
+
+    public ArrayList<Player> getPlayerList() {
+        return playerList;
+    }
+
+    public ArrayList<Enemy> getEnemyList() {
+        return enemyList;
+    }
+
+    public RogueMap getMaps() {
+        return Maps;
+    }
+
+    public int getCurrentFloor() {
+        return currentFloor;
+    }
+
+    public Cursor getCursor() {
+        return cursor;
+    }
+
+    public boolean Controller(CharKey dir){
+        if(dir.isUpArrow() || dir.code==CharKey.k && (cursor.getYPos()-1>=0)){
+            if(Maps.FreeSquare(cursor.xPos, cursor.yPos-1, currentFloor))
+                cursor.DeltaY(-1);
+        }
+        else if(dir.isDownArrow() || dir.code==CharKey.j && (cursor.getYPos()+1< 25)){
+            if(Maps.FreeSquare(cursor.xPos, cursor.yPos+1, currentFloor))
+                cursor.DeltaY(1);
+        }
+        else if(dir.isLeftArrow() || dir.code==CharKey.h && (cursor.getXPos()-1>=0)){
+            if(Maps.FreeSquare(cursor.xPos-1, cursor.yPos, currentFloor))
+                cursor.DeltaX(-1);
+        }
+        else if(dir.isRightArrow() || dir.code==CharKey.l && (cursor.getXPos()+1<80)){
+            if(Maps.FreeSquare(cursor.xPos+1, cursor.yPos, currentFloor))
+                cursor.DeltaX(1);
+        }
+        else if(dir.code==CharKey.y && cursor.getXPos()-1>=0 && cursor.getYPos()-1>=0){
+            if(Maps.FreeSquare(cursor.xPos-1, cursor.yPos-1, currentFloor)) {
+                cursor.DeltaX(-1);
+                cursor.DeltaY(-1);
+            }
+        }
+        else if(dir.code==CharKey.u && cursor.getXPos()+1<80 && cursor.getYPos()-1>=0){
+            if(Maps.FreeSquare(cursor.xPos+1, cursor.yPos-1, currentFloor)) {
+                cursor.DeltaX(1);
+                cursor.DeltaY(-1);
+            }
+        }else if(dir.code==CharKey.b && cursor.getXPos()-1>=0 && cursor.getYPos()+1<25){
+            if(Maps.FreeSquare(cursor.xPos-1, cursor.yPos+1, currentFloor)) {
+                cursor.DeltaX(-1);
+                cursor.DeltaY(1);
+            }
+        }else if(dir.code==CharKey.n && cursor.getXPos()+1<80 && cursor.getYPos()+1<25){
+            if(Maps.FreeSquare(cursor.xPos+1, cursor.yPos+1, currentFloor)) {
+                cursor.DeltaX(1);
+                cursor.DeltaY(1);
+            }
+        }
+        else if(dir.code == CharKey.ENTER){
+            //tbd
+        }
+        else if(dir.code == CharKey.I){
+            //tbd
+        }
+        else if(dir.code == CharKey.Q){
+            //Quit
+            return true;
+        }
+        return false;
+    }
+}
