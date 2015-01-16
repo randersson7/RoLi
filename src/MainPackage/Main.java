@@ -1,6 +1,10 @@
 package MainPackage;
 
-import java.util.Timer;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.Timer;
 
 import net.slashie.libjcsi.CharKey;
 import objects.*;
@@ -12,8 +16,15 @@ public class Main {
         ViewHandler view = new ViewHandler();
         ObjectHandler objectHandler = new ObjectHandler();
 
-        Timer timer = new Timer();
-        timer.schedule(new ViewTimer(view, objectHandler), 0);
+        Timer timer = new Timer(1000/60, new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.DrawStuff(objectHandler);
+				
+			}
+		});
+        timer.start();
         
         boolean stop = false;
         while(!stop){

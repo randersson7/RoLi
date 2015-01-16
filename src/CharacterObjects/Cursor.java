@@ -1,42 +1,62 @@
 package CharacterObjects;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by randersson on 2015-01-08.
  */
 public class Cursor {
-    private char symbol;
-    private int xPos;
-    private int yPos;
-    private boolean isVisible;
-    
+	private char symbol;
+	private int xPos;
+	private int yPos;
+	private boolean isVisible;
 
-    public Cursor(int x, int y) {
-        symbol = 'O';
-        xPos=x;
-        yPos=y;
-        isVisible = true;
-    }
+	Timer toggleVisibility;
 
-    public void DeltaX(int deltaX){
-        xPos+=deltaX;
-        
-    }
+	public Cursor(int x, int y) {
+		symbol = 'O';
+		xPos=x;
+		yPos=y;
+		isVisible = true;
+		toggleVisibility = new Timer();
+		toggleVisibility.schedule(new TimerTask() {
 
-    public void DeltaY(int deltaY){
-        yPos+=deltaY;
-    }
+			@Override
+			public void run() {
+				while(true){
+					isVisible = !isVisible;
+					try {
+						Thread.sleep(300);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}				
+			}
+		}, 100);
+	}
 
-    public int xPos() {
-        return xPos;
-    }
+	public void DeltaX(int deltaX){
+		xPos+=deltaX;
 
-    public int yPos() {
-        return yPos;
-    }
+	}
 
-    public char getSymbol() {
-        return symbol;
-    }
+	public void DeltaY(int deltaY){
+		yPos+=deltaY;
+	}
+
+	public int xPos() {
+		return xPos;
+	}
+
+	public int yPos() {
+		return yPos;
+	}
+
+	public char getSymbol() {
+		return symbol;
+	}
 
 	public boolean isVisible() {
 		return isVisible;

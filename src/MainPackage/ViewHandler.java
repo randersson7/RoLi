@@ -62,6 +62,7 @@ public class ViewHandler {
 			csi.print(objectHandler.getCursor().xPos(), objectHandler.getCursor().yPos(),
 					objectHandler.getCursor().getSymbol(), CSIColor.WHITE);
 		
+		
 		csi.refresh();
 	}
 }
