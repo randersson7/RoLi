@@ -28,4 +28,11 @@ public class Enemy extends Creature {
         MP=mp;
         color=color1;
     }
+    
+    public void Attack(){
+    	
+    }
+    public void Move(){
+    	
+    }
 }

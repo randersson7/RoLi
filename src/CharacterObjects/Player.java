@@ -7,11 +7,18 @@ import net.slashie.libjcsi.CSIColor;
  */
 public class Player extends Creature {
     int HP = 100;
+    
     public Player(char sym, int x, int y, CSIColor color){
         this.symbol = sym;
         this.color = color;
-        xPos=x;
-        yPos=y;
+        xyPos = new int[] {x,y};
         isVisible = true;
+    }
+    
+    public void Attack(){
+    	
+    }
+    public void Move(){
+    	
     }
 }

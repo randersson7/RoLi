@@ -58,6 +58,25 @@ public class ObjectHandler{
     }
 
     public boolean Controller(CharKey dir){
+    	Move(dir);
+        if(dir.code == CharKey.ENTER){
+            for (Player player : playerList) {
+				if(cursor.xPos() == player.getXPos() && cursor.yPos()==player.getYPos()){
+					player.MoveXPos(1);
+				}
+			}
+        }
+        else if(dir.code == CharKey.I){
+            //tbd
+        }
+        else if(dir.code == CharKey.Q){
+            //Quit
+            return true;
+        }
+        return false;
+    }
+    
+    void Move(CharKey dir){
         if(dir.isUpArrow() || dir.code==CharKey.k && (cursor.yPos()-1>=0)){
             if(Maps.FreeSquare(cursor.xPos(), cursor.yPos()-1, currentFloor))
                 cursor.DeltaY(-1);
@@ -96,16 +115,5 @@ public class ObjectHandler{
                 cursor.DeltaY(1);
             }
         }
-        else if(dir.code == CharKey.ENTER){
-            //tbd
-        }
-        else if(dir.code == CharKey.I){
-            //tbd
-        }
-        else if(dir.code == CharKey.Q){
-            //Quit
-            return true;
-        }
-        return false;
     }
 }

@@ -10,30 +10,28 @@ import ItemObjects.Item;
 /**
  * Created by randersson on 2015-01-05.
  */
-class Creature {
-    int HP = 100;
-    int MP = 10;
-    int attackPower = 5;
-
-    public boolean isVisible() {
-        return isVisible;
-    }
-
-    boolean isVisible;
-
-    int xPos = 0;
-    int yPos = 0;
-    int zPos = 0;
-
-    List<Item> inventory;
-    char symbol;
-    String background;
-    CSIColor color;
+abstract class Creature {
+    protected int HP = 100;
+    protected int MP = 10;
+    protected int attackPower = 5;
+    protected boolean isVisible;
+    protected int[] xyPos = new int[2];
+    protected List<Item> inventory;
+    protected char symbol;
+    protected String background;
+    protected CSIColor color;
 
     public Creature() {
         inventory = new ArrayList<Item>();
     }
 
+    abstract void Attack();
+    abstract void Move();
+    
+    public boolean isVisible() {
+        return isVisible;
+    }
+    
     public CSIColor getColor() {
         return color;
     }
@@ -43,18 +41,28 @@ class Creature {
     }
 
     public int getXPos() {
-        return xPos;
+        return getXyPos()[0];
     }
 
     public int getYPos() {
-        return yPos;
+        return getXyPos()[1];
     }
 
     public void MoveXPos(int deltaX){
-        xPos+=deltaX;
+        getXyPos()[0]+=deltaX;
     }
     
     public void MoveYPos(int deltaY){
-        yPos+=deltaY;
+        getXyPos()[1]+=deltaY;
     }
+    
+    
+
+	public int[] getXyPos() {
+		return xyPos;
+	}
+
+	public void setXyPos(int[] xyPos) {
+		this.xyPos = xyPos;
+	}
 }

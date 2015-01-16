@@ -8,16 +8,15 @@ import java.util.TimerTask;
  */
 public class Cursor {
 	private char symbol;
-	private int xPos;
-	private int yPos;
+	private int[] xyPos;
+	
 	private boolean isVisible;
 
 	Timer toggleVisibility;
 
 	public Cursor(int x, int y) {
 		symbol = 'O';
-		xPos=x;
-		yPos=y;
+		setXyPos(new int[] {x, y});
 		isVisible = true;
 		toggleVisibility = new Timer();
 		toggleVisibility.schedule(new TimerTask() {
@@ -38,20 +37,20 @@ public class Cursor {
 	}
 
 	public void DeltaX(int deltaX){
-		xPos+=deltaX;
+		getXyPos()[0]+=deltaX;
 
 	}
 
 	public void DeltaY(int deltaY){
-		yPos+=deltaY;
+		getXyPos()[1]+=deltaY;
 	}
 
 	public int xPos() {
-		return xPos;
+		return getXyPos()[0];
 	}
 
 	public int yPos() {
-		return yPos;
+		return getXyPos()[1];
 	}
 
 	public char getSymbol() {
@@ -66,4 +65,11 @@ public class Cursor {
 		this.isVisible = isVisible;
 	}
 
+	public int[] getXyPos() {
+		return xyPos;
+	}
+
+	public void setXyPos(int[] xyPos) {
+		this.xyPos = xyPos;
+	}
 }
