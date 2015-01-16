@@ -10,10 +10,13 @@ import ItemObjects.Item;
 /**
  * Created by randersson on 2015-01-05.
  */
-abstract class Creature {
+public abstract class Creature {
     protected int HP = 100;
     protected int MP = 10;
+    protected int moveRange = 3;
+    protected int attackRange = 1;
     protected int attackPower = 5;
+    protected int armor = 5;
     protected boolean isVisible;
     protected int[] xyPos = new int[2];
     protected List<Item> inventory;
@@ -21,12 +24,22 @@ abstract class Creature {
     protected String background;
     protected CSIColor color;
 
+    public int[] statsGet(){
+    	return new int[] {HP, MP, attackPower, armor}; 
+    }
+    
     public Creature() {
         inventory = new ArrayList<Item>();
     }
 
-    abstract void Attack();
-    abstract void Move();
+    void Attack(Creature target){
+    	target.HP -= this.attackPower*(100/(100+target.armor));
+    }
+    
+    
+    void Move(int[] xy){
+    	this.xyPos = xy;
+    }
     
     public boolean isVisible() {
         return isVisible;
@@ -55,8 +68,6 @@ abstract class Creature {
     public void MoveYPos(int deltaY){
         getXyPos()[1]+=deltaY;
     }
-    
-    
 
 	public int[] getXyPos() {
 		return xyPos;
