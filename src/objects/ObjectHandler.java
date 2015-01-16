@@ -16,7 +16,7 @@ import EnvironmentObjects.RogueMap;
 /**
  * Created by randersson on 2015-01-09.
  */
-public class ObjectHandler {
+public class ObjectHandler{
     private ArrayList<Player> playerList;
     private ArrayList<Enemy> enemyList;
 
