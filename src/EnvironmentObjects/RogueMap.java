@@ -20,7 +20,11 @@ public class RogueMap{
 
     public boolean FreeSquare(int x, int y, int floor){
         if(x>0 && x<mapCollection.get(floor).getCurrMap().length && y>0 && y<mapCollection.get(floor).getCurrMap()[0].length) {
-            if (mapCollection.get(floor).getCurrMap()[x][y] == ' ') {
+        	switch (mapCollection.get(floor).getCurrMap()[x][y]) {
+        	case ' ':
+        	case '.':
+        	case ',':
+        	case '"':
                 return true;
             }
         }
