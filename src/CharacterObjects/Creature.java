@@ -10,7 +10,7 @@ import ItemObjects.Item;
 /**
  * Created by randersson on 2015-01-05.
  */
-abstract class Creature {
+public abstract class Creature {
     protected int HP = 100;
     protected int MP = 10;
     protected int attackPower = 5;
