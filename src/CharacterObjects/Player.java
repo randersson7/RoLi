@@ -13,11 +13,4 @@ public class Player extends Creature {
         xyPos = new int[] {x,y};
         isVisible = true;
     }
-    
-    public void Attack(){
-    	
-    }
-    public void Move(){
-    	
-    }
 }

@@ -23,16 +23,9 @@ public class Enemy extends Creature {
         }
     }
 
-    void setStats(int hp, int mp, int attackPower, CSIColor color1){
+    void setStats(int hp, int mp, int attackPower, CSIColor color){
         HP=hp;
         MP=mp;
-        color=color1;
-    }
-    
-    public void Attack(){
-    	
-    }
-    public void Move(){
-    	
+        this.color=color;
     }
 }
