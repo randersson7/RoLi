@@ -3,6 +3,7 @@ package CharacterObjects;
 import net.slashie.libjcsi.CSIColor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ItemObjects.Item;
@@ -24,9 +25,9 @@ public abstract class Creature {
     protected String background;
     protected CSIColor color;
 
-    public int[] statsGet(){
-    	return new int[] {HP, MP, attackPower, armor}; 
-    }
+    //public List<int> getStats(){
+    //	return Arrays.asList(HP, MP, moveRange, attackPower, attackRange, armor);
+    //}
     
     public Creature() {
         inventory = new ArrayList<Item>();

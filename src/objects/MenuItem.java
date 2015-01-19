@@ -1,19 +1,20 @@
 package objects;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import CharacterObjects.*;
 
 public class MenuItem {
 	
-	list<Integer> stats = new ArrayList<Integer>();
+	List<Integer> stats = new ArrayList<Integer>();
 	
 	public MenuItem() {
 		
 	}
 	
 	public MenuItem(Creature creature){
-		stats.add(creature.);
+		//stats.addAll((creature.getStats()));
 	}
 
 	
