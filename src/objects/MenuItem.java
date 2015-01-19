@@ -7,14 +7,15 @@ import CharacterObjects.*;
 
 public class MenuItem {
 	
-	List<Integer> stats = new ArrayList<Integer>();
+	//List<Integer> stats = new ArrayList<Integer>();
 	
 	public MenuItem() {
 		
 	}
 	
 	public MenuItem(Creature creature){
-		//stats.addAll((creature.getStats()));
+		ArrayList<Integer> stats =  creature.getStats();
+		
 	}
 
 	

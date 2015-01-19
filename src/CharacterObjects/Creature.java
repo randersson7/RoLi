@@ -24,10 +24,16 @@ public abstract class Creature {
     protected char symbol;
     protected String background;
     protected CSIColor color;
-
-    //public List<int> getStats(){
-    //	return Arrays.asList(HP, MP, moveRange, attackPower, attackRange, armor);
-    //}
+    
+    private ArrayList<Integer> stats = new ArrayList<>();
+    public ArrayList<Integer> getStats(){
+    	stats.add(HP);
+    	stats.add(MP);
+    	stats.add(moveRange);
+    	stats.add(attackPower);
+    	stats.add(armor);
+    	return stats;
+    }
     
     public Creature() {
         inventory = new ArrayList<Item>();
