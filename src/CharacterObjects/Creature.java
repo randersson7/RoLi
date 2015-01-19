@@ -3,7 +3,6 @@ package CharacterObjects;
 import net.slashie.libjcsi.CSIColor;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import ItemObjects.Item;

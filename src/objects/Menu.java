@@ -14,11 +14,11 @@ public class Menu {
 	}
 	
 	public Menu(Creature creature) {
-		menuPosXY = new int[] {1,2};
+		addMenuItem(creature);
 	}
 	
-	public void addMenuItem(MenuItem item) {
-		menu.add(item);
+	public void addMenuItem(Creature creature) {
+		menu.add(new MenuItem(creature));
 	}
 	public void removeMenuItem(MenuItem item) {
 		menu.remove(menu.indexOf(item));

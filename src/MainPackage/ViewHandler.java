@@ -4,7 +4,6 @@ import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.wswing.WSwingConsoleInterface;
 import objects.ObjectHandler;
 
-import java.util.Properties;
 
 import CharacterObjects.Enemy;
 import CharacterObjects.Player;
@@ -61,6 +60,8 @@ public class ViewHandler {
 		if(objectHandler.getCursor().isVisible())
 			csi.print(objectHandler.getCursor().xPos(), objectHandler.getCursor().yPos(),
 					objectHandler.getCursor().getSymbol(), CSIColor.WHITE);
+		
+		//for(objectHandler.)
 		
 		
 		csi.refresh();
