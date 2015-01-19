@@ -7,6 +7,8 @@ import net.slashie.libjcsi.CharKey;
 import java.util.ArrayList;
 
 
+
+import CharacterObjects.Creature;
 import CharacterObjects.Cursor;
 import CharacterObjects.Enemy;
 import CharacterObjects.Player;
@@ -24,8 +26,11 @@ public class ObjectHandler{
 
     private Cursor cursor;
     private int currentFloor = 0;
-
+    private MenuHolder menuHolder;
+    private Creature selectedCreature;
+    
     public ObjectHandler() {
+    	menuHolder = new MenuHolder();
         Maps = new RogueMap();
 
         playerList = new ArrayList<Player>();
@@ -35,6 +40,27 @@ public class ObjectHandler{
 
         enemyList = new ArrayList<Enemy>();
         cursor = new Cursor(spawnPoint[0]+1, spawnPoint[1]);
+        
+    }
+    
+    public void cursorSelect(int[] xyPos){
+    	for (Enemy enemy : enemyList) {
+			if(enemy.getXyPos() == xyPos){
+				menuHolder.addMenu(enemy);
+				selectedCreature = enemy;
+				return;
+			}
+		}
+    	
+    	for (Player player : playerList) {
+			if(player.getXyPos() == xyPos){
+				menuHolder.addMenu(player);
+				selectedCreature = player;
+				return;
+			}
+		}
+    	
+    	selectedCreature = null;
     }
 
     public ArrayList<Player> getPlayerList() {
@@ -60,11 +86,7 @@ public class ObjectHandler{
     public boolean Controller(CharKey dir){
     	Move(dir);
         if(dir.code == CharKey.ENTER){
-            for (Player player : playerList) {
-				if(cursor.xPos() == player.getXPos() && cursor.yPos()==player.getYPos()){
-					player.MoveXPos(1);
-				}
-			}
+            cursorSelect(cursor.getXyPos());
         }
         else if(dir.code == CharKey.I){
             //tbd
