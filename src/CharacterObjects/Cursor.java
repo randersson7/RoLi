@@ -13,6 +13,7 @@ public class Cursor {
 	private boolean isVisible;
 
 	Timer toggleVisibility;
+	Creature selectedCreature;
 
 	public Cursor(int x, int y) {
 		symbol = 'O';
