@@ -9,7 +9,6 @@ import java.util.TimerTask;
 public class Cursor {
 	private char symbol;
 	private int[] xyPos;
-	
 	private boolean isVisible;
 
 	Timer toggleVisibility;

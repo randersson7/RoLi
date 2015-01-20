@@ -15,7 +15,6 @@ public class RogueMap{
         setItemCollection(new ArrayList<ContainerItem>());
         AddFloor();
         AddItem();
-        
     }
 
     public boolean FreeSquare(int x, int y, int floor){
