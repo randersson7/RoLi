@@ -8,6 +8,9 @@ import java.util.ArrayList;
 
 
 
+
+import java.util.Arrays;
+
 import CharacterObjects.Creature;
 import CharacterObjects.Cursor;
 import CharacterObjects.Enemy;
@@ -43,17 +46,24 @@ public class ObjectHandler{
         
     }
     
+    public MenuHolder getMenuHolder() {
+    	return menuHolder;
+    }
+    
     public void cursorSelect(int[] xyPos){
     	for (Enemy enemy : enemyList) {
 			if(enemy.getXyPos() == xyPos){
+				System.out.println("Enemy pos exist.");
 				menuHolder.addMenu(enemy);
+
+				
 				selectedCreature = enemy;
 				return;
 			}
 		}
     	
-    	for (Player player : playerList) {
-			if(player.getXyPos() == xyPos){
+    	for (Player player : playerList) {    		
+    		if(Arrays.equals(player.getXyPos(), xyPos)) {
 				menuHolder.addMenu(player);
 				selectedCreature = player;
 				return;

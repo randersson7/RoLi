@@ -24,14 +24,21 @@ public abstract class Creature {
     protected String background;
     protected CSIColor color;
     
-    private ArrayList<Integer> stats = new ArrayList<>();
-    public ArrayList<Integer> getStats(){
-    	stats.add(HP);
-    	stats.add(MP);
-    	stats.add(moveRange);
-    	stats.add(attackPower);
-    	stats.add(armor);
-    	return stats;
+    //Array[] statsArray = new Array[]{HP, MP, moveRange, attackRange, attackPower, armor};
+    
+    ArrayList<Integer> statsList = new ArrayList<>();
+    public ArrayList<Integer> statsArray() {
+    	statsList.add(HP);
+    	statsList.add(MP);
+    	statsList.add(moveRange);
+    	statsList.add(attackRange);
+    	statsList.add(attackPower);
+    	statsList.add(armor);
+    	return statsList;
+    }
+
+    public String[] getStats(){
+    	return new String[] {String.valueOf(HP), String.valueOf(MP), String.valueOf(moveRange), String.valueOf(attackPower), String.valueOf(armor)};
     }
     
     public Creature() {

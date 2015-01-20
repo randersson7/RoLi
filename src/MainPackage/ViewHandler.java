@@ -2,6 +2,7 @@ package MainPackage;
 import net.slashie.libjcsi.CSIColor;
 import net.slashie.libjcsi.CharKey;
 import net.slashie.libjcsi.wswing.WSwingConsoleInterface;
+import objects.MenuItem;
 import objects.ObjectHandler;
 
 
@@ -50,6 +51,7 @@ public class ViewHandler {
 		for(Player tmpP: objectHandler.getPlayerList()){
 			if(tmpP.isVisible())
 				csi.print(tmpP.getXPos(), tmpP.getYPos(), tmpP.getSymbol(), tmpP.getColor());
+				csi.print(9, 9, (tmpP.getXPos() + " " + tmpP.getYPos()).toString(), tmpP.getColor());
 		}
 
 		for(Enemy tmpE: objectHandler.getEnemyList()){
@@ -61,8 +63,14 @@ public class ViewHandler {
 			csi.print(objectHandler.getCursor().xPos(), objectHandler.getCursor().yPos(),
 					objectHandler.getCursor().getSymbol(), CSIColor.WHITE);
 		
-		//for(objectHandler.)
-		
+		for(MenuItem item : objectHandler.getMenuHolder().getMenuItemList()) {
+			int i = 0;
+			for( String stat : item.getCreatureStats() ) {
+				csi.print(item.getXyPos()[0], item.getXyPos()[1]+i, stat, CSIColor.WHITE);
+				i++;
+			}
+		}
+		csi.print(10, 10, objectHandler.getCursor().getXyPos()[0] + " " + objectHandler.getCursor().getXyPos()[1]);
 		
 		csi.refresh();
 	}

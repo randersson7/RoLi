@@ -5,7 +5,8 @@ import java.util.List;
 
 
 public class MenuHolder {
-	List<Menu> menu = new ArrayList<Menu>();
+	List<Menu> menuList = new ArrayList<Menu>();
+	
 
 	
 	public MenuHolder() {
@@ -13,16 +14,24 @@ public class MenuHolder {
 	}
 	
 	public void addMenu(Creature creature) {
-		menu.add(new Menu(creature));
+		menuList.add(new Menu(creature));
 	}
 	
 	
 	
 	
 	public void removeMenuItem(Menu item) {
-		menu.remove(menu.indexOf(item));
+		menuList.remove(menuList.indexOf(item));
 	}
 	
-	//public ArrayList<String> 
+	public ArrayList<MenuItem> getMenuItemList() {
+		ArrayList<MenuItem> menuItemList = new ArrayList<MenuItem>();
+		for( Menu menu  : menuList ) {
+			menuItemList.addAll(menu.getMenuItemList());
+		}
+		return menuItemList;
+	}
+	
+	
 	
 }
